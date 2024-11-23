@@ -37,8 +37,8 @@ input{
     border-radius: 5px; 
 }
 button{
-    width: 60%;
-    height: 40px;
+    width: 20%;
+    height: 30px;
     margin: 10px auto;
     justify-content: center;
     display: block;
@@ -50,6 +50,7 @@ button{
     outline: none;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 
 }
 button:hover{
