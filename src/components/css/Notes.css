@@ -1,0 +1,99 @@
+.notes_card ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.notes_card ul li{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;    
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    background-color: #dad1d1;
+    overflow: hidden;
+    margin: 10px;
+    position: relative;
+    transform: translate(20px);
+    transition: transform 0.3s , box-shadow 0.3s ease , opacity 0.3s ease;
+    opacity: 0;
+    animation: slideIn  0.4s forwards;
+    
+}
+.notes_card ul li:hover{
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3)
+}
+.notes_card ul{
+    margin-top: 10px;
+}
+.notes_card ul li h3{
+    font-size: 1.5rem;
+    margin: 10px 0;
+    
+}
+.notes_card ul li p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+.notes_card ul li strong{
+    color: #333;
+}
+.notes_card ul li small{
+    display: block;
+}
+.notes_card ul li #btn3{
+    margin-right: 10px;
+}
+.notes_card ul li button{
+    width: 20%;
+    height: 35px;
+    color: #fff;
+    background: #573b8a;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer; 
+}
+.notes_card ul li button:hover{
+    background: #6d44b8; 
+}
+h1{
+    color: #dad1d1;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+}
+#btn4{
+    width: 10%;
+    height: 50px;
+    margin-left: 20px;
+    color: #fff;
+    background: #573b8a;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer; 
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

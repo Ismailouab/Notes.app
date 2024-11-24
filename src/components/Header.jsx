@@ -1,5 +1,6 @@
 import React from 'react'
 import './css/Header.css';
+import { Link } from 'react-router-dom';
 function Header({setConnected}) {
   const logout = () => {
     localStorage.removeItem("token");
@@ -7,7 +8,7 @@ function Header({setConnected}) {
   }
   return (
     <div className='header'>
-        <h1 className='title'>Notes</h1>
+        <Link to='/' className='link'><h1 className='title'>Notes</h1></Link>
         <button id='btn2' onClick={logout}>Logout</button> 
     </div>
 

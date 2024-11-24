@@ -1,0 +1,39 @@
+.note{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#inputCreate {
+    width: 100%;
+    font-size: 20px;
+}
+
+#content{
+    width: 100%;
+    font-size: 20px;
+    background: #dad1d1;
+    justify-content: center;
+    display: flex;
+    margin: 20px auto;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+#btn5{
+    width: 50%;
+    height: 45px;
+    font-size: 10px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #573b8a;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

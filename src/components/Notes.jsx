@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import './css/Notes.css';
 
 function Notes() {
 const [notes,setNotes]=useState([])
@@ -44,34 +45,40 @@ const [notes,setNotes]=useState([])
 
  }
   return (
-
-      <div>
-        <h1>Mes Notes</h1>
-        <Link to='/create'><button >Create Note</button></Link>
-        {notes.length > 0 ? (
-            <ul>
-                {notes.map((note) => 
-                    (
-                      <li key={note.id}>
-                        <h3>{note.title}</h3>
-                        <p>{note.content}</p>
-                        <small>Created on: {new Date(note.date).toLocaleString()}</small>
-                        <span>
-                          <button onClick={()=>deleteNote(note.id)}>del</button>
-                          <Link to={`/notes/${note.id}`}><button>Edit</button></Link>
-                        </span>
-                      </li>
+      <>
+        <h1>Mes Notes</h1> 
+        <Link to='/create'><button id='btn4'>Create Note</button></Link>
+      <div className='notes_card'>
+        <div className="info">
+         
+          {notes.length > 0 ? (
+              <ul>
+                  {notes.map((note) => 
+                      (
+                        <li key={note.id}>
+                          <h3>{note.title}</h3>
+                          <p> <strong>Content:</strong>{note.content}</p>
+                          <p><strong>Created on:</strong> {new Date(note.date).toLocaleString()}</p>
+                          <span>
+                            <button id='btn3' onClick={()=>deleteNote(note.id)}>del</button>
+                            <Link to={`/notes/${note.id}`}><button>Edit</button></Link>
+                          </span>
+                        </li>
+                      )
                     )
-                  )
-                }
-              </ul>
-            ) : (
-              <p>Aucune note disponible</p>
-            )
-        }
+                  }
+                </ul>
+              ) : (
+                <p>Aucune note disponible</p>
+              )
+          }
+        </div>
         
         
-      </div>    
+        
+      </div>        
+      </>
+  
 
   );
 }

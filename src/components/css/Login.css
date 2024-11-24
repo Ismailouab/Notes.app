@@ -27,7 +27,8 @@ label{
     font-weight: hold;
 }
 input{
-    width: 60%;
+    width: 50%;
+    font-size: 20px;
     height: 20px;
     background: #dad1d1;
     justify-content: center;
@@ -38,7 +39,8 @@ input{
     outline: none;
     border-radius: 5px; 
 }
-#btn1{
+
+#btn1 {
     width: 30%;
     height: 50px;
     margin: 10px auto;

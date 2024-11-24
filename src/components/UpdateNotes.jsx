@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
+
 function UpdateNotes() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -58,9 +59,10 @@ function UpdateNotes() {
   return (
     <div className='note'>
         <form onSubmit={update}>
-        <input type="text" placeholder='Title'  value={title} onChange={(e) => setTitle(e.target.value)}/>
-        <textarea cols={10} rows={5} placeholder='Type...' maxLength={100} value={content} onChange={(e) => setContent(e.target.value)} ></textarea> 
-        <button type='submit'>update</button> 
+        <h1>Create Note</h1>
+        <input id='inputCreate' type="text" placeholder='Title'  value={title} onChange={(e) => setTitle(e.target.value)}/>
+        <textarea id='content' rows={9} placeholder='Type...' maxLength={100} value={content} onChange={(e) => setContent(e.target.value)} ></textarea> 
+        <button id='btn5' type='submit'>update Note</button> 
         </form>
 
     </div>
