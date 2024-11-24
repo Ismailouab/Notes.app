@@ -23,18 +23,18 @@ function Login(props) {
         }
     }
   return (
-    <div className='main'>
+    <div className='loginCard'>
         <div className='login'>
             <form  onSubmit={clickbutton}>
                 <label>login</label>
                 <input type="text" placeholder='Cin' value={cin} onChange={(e)=>setCin(e.target.value)} />
                 <input type='password' placeholder='Password'value={password} onChange={(e)=>setPasword(e.target.value)} />
-                <button>Login</button>
+                <button id='btn1'>Login</button>
             </form>
         </div>   
     </div>
 
-  )
+  );
 }
 
 export default Login
