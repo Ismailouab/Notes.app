@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import './css/Notes.css';
+import Header from './Header';
 
-function Notes() {
+function Notes(props) {
 const [notes,setNotes]=useState([])
  useEffect(()=>{
     getNotes();
@@ -38,6 +39,7 @@ const [notes,setNotes]=useState([])
     })
     console.log(resp);
     setNotes(notes.filter(note => note.id !== id));
+    props.setConnected(true)
   }catch(error){
     console.error('Error deleting note:', error.response ? error.response.data : error.message);
     alert('Failed to delete note');
@@ -46,6 +48,9 @@ const [notes,setNotes]=useState([])
  }
   return (
       <>
+      <div className='main'>
+        <Header/>
+      </div>
         <h1>Mes Notes</h1> 
         <Link to='/create'><button id='btn4'>Create Note</button></Link>
       <div className='notes_card'>
@@ -57,8 +62,8 @@ const [notes,setNotes]=useState([])
                       (
                         <li key={note.id}>
                           <h3>{note.title}</h3>
-                          <p> <strong>Content:</strong>{note.content}</p>
-                          <p><strong>Created on:</strong> {new Date(note.date).toLocaleString()}</p>
+                          <p> <strong>Content: </strong>{note.content}</p>
+                          <p><strong>Created on: </strong> {new Date(note.date).toLocaleString()}</p>
                           <span>
                             <button id='btn3' onClick={()=>deleteNote(note.id)}>del</button>
                             <Link to={`/notes/${note.id}`}><button>Edit</button></Link>

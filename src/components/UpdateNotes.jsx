@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import Header from './Header';
 
 
-function UpdateNotes() {
+function UpdateNotes(props) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const { id } = useParams(); 
@@ -20,6 +21,7 @@ function UpdateNotes() {
         });
         setTitle(resp.data.title);
         setContent(resp.data.content);
+
       }catch(error){
         console.error('Error fetching note:', error.response ? error.response.data : error.message);
         alert('Failed to load note');
@@ -49,7 +51,8 @@ function UpdateNotes() {
       }
       )
       console.log('Response:', resp.data);
-      navigate('/');
+      props.setConnected(true)
+      navigate('/note');
     }catch(error){
         console.error('Error fetching notes:', error.response?error.response.data:error.message);
             alert("Failed to fetch notes")
@@ -57,15 +60,21 @@ function UpdateNotes() {
     }
   }
   return (
-    <div className='note'>
-        <form onSubmit={update}>
-        <h1>Create Note</h1>
-        <input id='inputCreate' type="text" placeholder='Title'  value={title} onChange={(e) => setTitle(e.target.value)}/>
-        <textarea id='content' rows={9} placeholder='Type...' maxLength={100} value={content} onChange={(e) => setContent(e.target.value)} ></textarea> 
-        <button id='btn5' type='submit'>update Note</button> 
-        </form>
+    <>
+      <div className='main'>
+        <Header />
+      </div>
+      <div className='note'>
+          <form onSubmit={update}>
+          <h1>Create Note</h1>
+          <input id='inputCreate' type="text" placeholder='Title'  value={title} onChange={(e) => setTitle(e.target.value)}/>
+          <textarea id='content' rows={9} placeholder='Type...' maxLength={100} value={content} onChange={(e) => setContent(e.target.value)} ></textarea> 
+          <button id='btn5' type='submit'>update Note</button> 
+          </form>
 
-    </div>
+      </div>    
+    </>
+
   )
 }
 

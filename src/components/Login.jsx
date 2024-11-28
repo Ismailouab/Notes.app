@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import './css/Login.css';
+import { useNavigate} from 'react-router-dom';
+
 
 function Login(props) {
     const [cin,setCin]=useState('')
     const [password,setPasword]=useState('')
-
+    const navigate = useNavigate();
     const clickbutton=async(e)=>{
         e.preventDefault();
         try{
@@ -17,6 +19,7 @@ function Login(props) {
             const token=localStorage.setItem("token",resp.data.token)
             console.log(token);
             props.setConnected(true)
+            navigate('/note');
         }catch(error){
             console.error('login error:', error.response?error.response.data:error.message);
             alert("login failed please check your credentials")

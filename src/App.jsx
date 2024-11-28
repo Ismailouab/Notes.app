@@ -11,21 +11,21 @@ function App() {
   const [connected, setConnected]=useState(false);
   return (
     <>
-    <div className='main'>
-      <Header setConnected={setConnected}/>
-    </div>
+    
       
       <div className="App">
-        <Routes>
-          <Route path='' element={
-          connected ? <Notes/> :<Login setConnected={setConnected}/>
-        }/>
-        </Routes>
-        
+      <Routes>
+        {
+          
+          connected ? <Route path='/note' element={<Notes />}/> 
+          :<Route path='/' element={<Login setConnected={setConnected}/>}/> 
+        }  
+        </Routes>  
       </div>
       <Routes>
-        <Route path='/notes/:id' element={<UpdateNotes/>}/>
-        <Route path='/create' element={<CreateNotes/>}/>
+      <Route path='/n' element={<Header setConnected={setConnected}/>}/>
+        <Route path='/notes/:id' element={<UpdateNotes setConnected={setConnected}/>}/>
+        <Route path='/create' element={<CreateNotes setConnected={setConnected}/>}/>
       </Routes>
     </>
 
