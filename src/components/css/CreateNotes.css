@@ -37,3 +37,25 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+select {
+    width: 100%;
+    font-size: 18px;
+    background-color: #dad1d1;
+    border: 1px solid #573b8a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    color: #333;
+    outline: none;
+}
+  
+select:focus {
+    border-color: #573b8a;
+    box-shadow: 0 0 5px rgba(87, 59, 138, 0.5);
+}
+  
+option {
+    color: #333;
+}
+

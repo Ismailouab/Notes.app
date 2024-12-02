@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './css/Notes.css';
 import Header from './Header';
 
-function Notes(props) {
+function Notes() {
 const [notes,setNotes]=useState([])
  useEffect(()=>{
     getNotes();
@@ -31,19 +31,21 @@ const [notes,setNotes]=useState([])
  const deleteNote= async(id)=>{
   const token=localStorage.getItem('token')
   console.log(token);
-  try{
-    const resp =await axios.delete(`/notes/${id}`,{
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
-    })
-    console.log(resp);
-    setNotes(notes.filter(note => note.id !== id));
-    props.setConnected(true)
-  }catch(error){
-    console.error('Error deleting note:', error.response ? error.response.data : error.message);
-    alert('Failed to delete note');
-  }
+  var isCofimed=window.confirm('do you want deleted')
+  if (isCofimed)
+    try{
+      const resp =await axios.delete(`/notes/${id}`,{
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+      console.log(resp);
+      setNotes(notes.filter(note => note.id !== id));
+      
+    }catch(error){
+      console.error('Error deleting note:', error.response ? error.response.data : error.message);
+      alert('Failed to delete note');
+    }
 
  }
   return (
@@ -55,8 +57,6 @@ const [notes,setNotes]=useState([])
         <Link to='/create'><button id='btn4'>Create Note</button></Link>
       <div className='notes_card'>
         <div className="info">
-         
-          {notes.length > 0 ? (
               <ul>
                   {notes.map((note) => 
                       (
@@ -73,10 +73,6 @@ const [notes,setNotes]=useState([])
                     )
                   }
                 </ul>
-              ) : (
-                <p>Aucune note disponible</p>
-              )
-          }
         </div>
         
         

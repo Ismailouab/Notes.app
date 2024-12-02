@@ -21,8 +21,16 @@ function Login(props) {
             props.setConnected(true)
             navigate('/note');
         }catch(error){
-            console.error('login error:', error.response?error.response.data:error.message);
-            alert("login failed please check your credentials")
+            if (error.response) {
+                if (error.response.status === 401) {
+                    navigate('/');
+                } else {
+                    console.error('Error status:', error.response.status);
+                    console.error('Error data:', error.response.data);
+                }
+            } else {
+                console.error('Error message:', error.message);
+            }
         }
     }
   return (
