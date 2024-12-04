@@ -23,7 +23,8 @@ function UpdateNotes() {
         });
         setTitle(resp.data.title);
         setContent(resp.data.content);
-        setSharedWith(resp.data.shared_with || [])
+        setSharedWith(resp.data.shared_with.map(user => user.id));
+
 
         const usersResp = await axios.get('/users', {
           headers: { Authorization: `Bearer ${token}` },
@@ -41,12 +42,13 @@ function UpdateNotes() {
   const handleShareChange = (e) => {
     const value = Array.from(e.target.selectedOptions,(option) => parseInt(option.value));
     setSharedWith(value);
+ 
   };
 
   const update=async (e)=>{
     e.preventDefault();
     const token = localStorage.getItem('token');
-    console.log('Attempting to update note with:', { title, content  });
+  
     console.log('Token:', token); 
 
     if (!token) {
@@ -55,10 +57,8 @@ function UpdateNotes() {
     }
      console.log('Updating note with shared users:', sharedWith);
     try {
-      console.log('Sending PUT request to update note');
-   
       const resp = await axios.put(`/notes/${id}`,
-      { title ,  content,  sharedWith  },
+      { title ,  content, shared_with: sharedWith },
       {
           headers: { Authorization: `Bearer ${token}` },
       }

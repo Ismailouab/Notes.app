@@ -87,6 +87,64 @@ h1{
     cursor: pointer; 
 }
 
+
+.shared-users {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+    list-style: none;
+    padding: 0;
+}
+  
+  
+.initials {
+    margin-right: -9px; 
+}
+  
+
+.initial-badge {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: #573b8a;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+  
+.initial-badge:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    transition: opacity 0.3s;
+}
+  
+.initial-badge::after {
+    opacity: 0;
+    visibility: hidden;
+}
+.nothing{
+    color: #555;
+}
+  
+  
 @keyframes slideIn {
     from {
         opacity: 0;

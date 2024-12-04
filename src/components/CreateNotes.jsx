@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Header from './Header';
 import { useNavigate } from 'react-router-dom';
 import './css/CreateNotes.css';
-
-
 function CreateNotes() {
 const [title,setTitle]=useState('')
 const [content,setContent]=useState('')
@@ -70,7 +68,7 @@ const createNote =async(e)=>{
                         <option key={user.id} value={user.id}>
                             {user.first_name} ({user.last_name})
                         </option>
-                    ))}
+                     ))}
                 </select>
 
 
